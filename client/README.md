@@ -1,0 +1,1 @@
+Simple gitlab events visualization

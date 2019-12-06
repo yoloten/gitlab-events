@@ -1,0 +1,113 @@
+.comment-main {
+    width: 305px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 50px;
+}
+
+.comment-content {
+    border: .5px solid rgba(77, 77, 77, 0.204);
+    border-top: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.comment-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+}
+
+.comment-created {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.comment-id {
+    display: flex;
+    margin-top: 15px;
+    color: rgba(21, 101, 175, 0.897);
+    width: 73px;
+    justify-content: space-between;
+}
+
+.comment-description {
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 14px;
+    height: 27px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+    margin-right: 15px;
+}
+
+.comment-commit {
+    margin-left: 15px;
+    margin-bottom: 20px;
+    margin-right: 15px;
+}
+
+.comment-commit-head {
+    display: flex;
+    font-size: 12px;
+    margin-top: 10px;
+    height: 20px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+}
+
+.comment-merge-bottom {
+    display: flex;
+    margin-right: 15px;
+    margin-left: 15px;
+    justify-content: space-between;
+    margin-top: 15px;
+    height: 27px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.comment-merge-main {
+    display: flex;
+    margin-right: 15px;
+    margin-left: 15px;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 27px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.comment-merge-description {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.comment-merge-state {
+    width: 70px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background: rgba(6, 255, 89, 0.815);
+    color: #fff;
+}
+
+.mr {
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 10px;
+    height: 20px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+}
+
+.merge-commit-id {
+    display: flex;
+    width: 72px;
+    justify-content: space-between;
+}

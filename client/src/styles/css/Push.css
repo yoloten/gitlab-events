@@ -1,0 +1,117 @@
+.push-main {
+    width: 380px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 50px;
+}
+
+
+.header {
+   display: flex;
+   height: 55px;
+   background: rgba(21, 101, 175, 0.897);
+   flex-direction: column;
+   color: #fff;
+   justify-content: center;
+   border-top-left-radius: 3px;
+   border-top-right-radius: 3px;
+}
+
+.project-info{
+    display: flex;
+    font-size: 12px;
+    margin-left: 9px;
+    margin-top: 5px;
+}
+
+.project {
+    display: flex;
+    margin-left: 7px;
+}
+
+.name {
+    margin-left: 3px;
+    margin-top: 0px;
+}
+
+.id {
+    margin-top: 0px;
+}
+
+.event-name-container {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.event-name {
+    margin-left: 5px;
+}
+
+.commits {
+    display: flex;
+    flex-direction: column;
+    border: .5px solid rgba(77, 77, 77, 0.204);
+    border-top: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.commits-header {
+    display: flex;
+    margin-left: 15px;
+    margin-top: 15px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+    height: 30px;
+    width: 345px;
+    font-size: 14px;
+}
+
+.commits-count {
+    margin-top: -2px;
+}
+
+.commit-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.commit {
+    height: 55px;
+    border-bottom: .5px solid rgba(77, 77, 77, 0.204);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.commit-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.commit-id {
+    font-size: 12px;
+    color: rgb(26, 130, 228);
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.commit-created {
+    display: flex;
+    font-size: 12px;
+    margin-top: 5px;
+    width: 227px;
+    justify-content: space-between;
+    color: #808080;
+}
+
+.author-name {
+    color: #000;
+}

@@ -1,0 +1,25 @@
+
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 1100px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  background: rgba(21, 101, 175, 0.897);
+  height: 40px;
+  padding-left: 40px;
+  padding-top: 20px;
+  font-size: 16px;
+  color: #fff
+}
