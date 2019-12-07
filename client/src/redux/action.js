@@ -1,5 +1,9 @@
 import socketReceiver from '../utils/receiver'
-import axios from 'axios'
+import { Events } from 'gitlab'
+
+const api = new Events({
+    token: '64ExNdahUVASxCixk8zH'
+  })
 
 export const socketAction = () => {
     return (dispatch) => {
@@ -9,11 +13,12 @@ export const socketAction = () => {
 
 export const eventsHistory = () => {
     return async (dispatch) => {
-        const events = await axios.post("https://a7f0dc09-09c4-4cfc-9efb-44e25b4ec444.mock.pstmn.io/post")
+        const history = await api.all()
+        const filtered = history.filter(project => project.project_id === 15598315)
         
         dispatch({
             type: "GET_EVENTS_HISTORY",
-            payload: events.data
+            payload: filtered.slice(0, 10)
         })
     }
 }

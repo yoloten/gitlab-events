@@ -8,9 +8,8 @@ import Comment from './containers/Comment'
 import Push from './containers/Push'
 
 const App = () => {
-  const state = useSelector((state) => state)
-  const { issue_comment, issue_open, issue_closed, push, merge_open, megre_closed, commit_comment, merge_comment } = state.data
-  const { fromSocket } = state
+  const state = useSelector((state) => state.data)
+  
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -18,35 +17,29 @@ const App = () => {
     dispatch(eventsHistory())
   }, [])
 
-  const showFromSocketEvent = (event, index) => {
-    switch (event.object_kind) {
-      case "push":
-        return <Push key={index} push={event}/>
-      case "issue" || "merge_request":
-        return <MergeAndIssue key={index}  merge={event} />
-      case "comment":
-        return <Comment key={index}  comment={event} />
-      default:
-        return ''
+  const matcher = (event, index) => {
+    if (event.target_type === "Issue" 
+        || event.target_type === "MergeRequest" 
+        || event.object_kind === "issue" 
+        || event.object_kind ===  "merge_request"
+      ) {
+      return <MergeAndIssue key={index} merge={event} />
+    }
+
+    if (event.push_data || event.object_kind === "push" ) {
+      return <Push key={index} push={event} />
+    }
+
+    if (event.target_type === "Note" || event.object_kind === "comment" ) {
+      return <Comment key={index} comment={event} />
     }
   }
-
+  
   return (
     <div className="app">
       <div className="app-title">Gitlab Visualization</div>
       <div className="main">
-        {fromSocket.length > 0 
-          ? fromSocket.map((event, index) => showFromSocketEvent(event, index))
-          : '' 
-        }
-        <Push push={push} />
-        <MergeAndIssue merge={merge_open} />
-        <MergeAndIssue merge={megre_closed} />
-        <MergeAndIssue merge={issue_open} />
-        <MergeAndIssue merge={issue_closed} />
-        <Comment comment={commit_comment} />
-        <Comment comment={merge_comment} />
-        <Comment comment={issue_comment} />
+        {state.map((event, index) => matcher(event, index))}
       </div>
     </div>
   )

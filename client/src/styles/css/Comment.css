@@ -5,6 +5,11 @@
     margin-top: 50px;
 }
 
+.comment-title {
+    margin: 15px;
+    font-size: 14px;
+}
+
 .comment-content {
     border: .5px solid rgba(77, 77, 77, 0.204);
     border-top: none;
@@ -31,7 +36,7 @@
     display: flex;
     margin-top: 15px;
     color: rgba(21, 101, 175, 0.897);
-    width: 73px;
+    width: 75px;
     justify-content: space-between;
 }
 

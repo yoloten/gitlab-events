@@ -9,11 +9,11 @@ import BookIcon from "../styles/icons/BookIcon"
 import '../styles/css/Merge.css'
 
 
-export default function MergeAndIssue({ merge }) {
-
+export default function MergeAndIssue({ merge }) {  
+    
     return (
         <div className="merge-main">
-            {merge
+            {merge.object_attributes
                 ? <>
                     <div className="header-merge">
                         <div className="header-leftside">
@@ -44,19 +44,13 @@ export default function MergeAndIssue({ merge }) {
                     <div className="main-content">
                         <div className="main-head">
                             <div className="merge-created">
-                                {'Opened on '}
-                                <span className="merge-author-name">
-                                    {merge.object_attributes.created_at.toLocaleString("ru-RU").slice(0, 10)}
-                                </span>
+                                {'Opened on ' + merge.object_attributes.created_at.toLocaleString("ru-RU").slice(0, 10)}
                                 <span className="merge-author"> {"by " + merge.user.username}</span>
                                 <a className="merge-url" href={merge.object_attributes.url}><LinkIcon /></a>
                             </div>
                             {merge.object_attributes.state === 'closed'
                                 ? <div className="merge-created">
-                                    {'Closed on'}
-                                    <span className="merge-author-name">
-                                        {merge.object_attributes.updated_at.toLocaleString("ru-RU").slice(0, 10)}
-                                    </span>
+                                    {'Closed on ' + merge.object_attributes.updated_at.toLocaleString("ru-RU").slice(0, 10)}
                                     <span className="merge-author"> {"by " + merge.user.username}</span>
                                 </div>
                                 : ''
@@ -106,7 +100,54 @@ export default function MergeAndIssue({ merge }) {
                         }
                     </div>
                 </>
-                : "loading.."
+                : <>
+                    <div className="header-merge">
+                        <div className="header-leftside">
+                            <div className="event-name-container">
+                                {merge.target_type === "Issue" ? <AlertIcon /> : <MergeIcon />}
+                                <div className="event-name">
+                                    {merge.target_type === "Issue" ? "Issue Event" : "Merge Request"}
+                                </div>
+                            </div>
+                            <div className="project-info">
+                                <div className="project">
+                                    <div className="id">
+                                        {"ID " + merge.target_id}
+                                    </div>
+                                </div>
+                                <div className="project">
+                                    <BookIcon />
+                                    <div className="name">{merge.project_id}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            className={merge.action_name === "opened" ? `state open` : `state close`}
+                        >
+                            {merge.action_name}
+                        </div>
+                    </div>
+                    <div className="main-content">
+                        <div className="main-head">
+                            <div className="merge-created">
+                                {'Opened on '}
+                                <span className="merge-author-name">
+                                    {normalizeDate(merge.created_at)}
+                                </span>
+                                <span className="merge-author"> {"by " + merge.author_username}</span>
+                            </div>
+                            <div className="from">
+                                {merge.target_type === "Issue" ? "" : " into "}
+                                <span className="merge-author"> {merge.target_type === "Issue" ? "" : merge.target_id}</span>
+                            </div>
+                        </div>
+                        <div className="title-description">
+                            <div className="merge-title">
+                                {merge.target_title}
+                            </div>
+                        </div>
+                    </div>
+                </>
             }
         </div >
     )

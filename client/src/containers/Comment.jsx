@@ -11,6 +11,10 @@ import "../styles/css/Comment.css"
 export default function Comment({ comment }) {
 
     const showEventForComment = (comment) => {
+        if (comment.note.noteable_type === "MergeRequest" || comment.note.noteable_type === "Issue") {
+            return <div className="comment-title"> {"Title: " + comment.target_title}</div>
+        }
+
         if (comment.object_attributes.noteable_type === "Commit") {
             return <div className="comment-commit">
                 <div className="comment-commit-head">
@@ -91,7 +95,7 @@ export default function Comment({ comment }) {
 
     return (
         <div className="comment-main">
-            {comment
+            {comment.object_attributes
                 ? <>
                     <div className="header">
                         <div className="event-name-container">
@@ -127,7 +131,41 @@ export default function Comment({ comment }) {
                         {showEventForComment(comment)}
                     </div>
                 </>
-                : "loading.."
+
+                : <>
+                    <div className="header">
+                        <div className="event-name-container">
+                            <CommentIcon />
+                            <div className="event-name">{`Comment on ${comment.note.noteable_type}`}</div>
+                        </div>
+                        <div className="project-info">
+                            <div className="project">
+                                <BookIcon />
+                                <div className="name">{comment.project_id}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="comment-content">
+                        <div className="comment-head">
+                            <div className="comment-created">
+                                {'Created on '}
+                                <span className="merge-author-name">
+                                    {normalizeDate(comment.created_at)}
+                                </span>
+                                <span className="merge-author"> {"by " + comment.author_username}</span>
+                            </div>
+                            <div className="comment-id">
+                                <div className="disc-id">{"ID:" + comment.note.id}</div>
+                            </div>
+
+                        </div>
+                        <div className="comment-description">
+                            {comment.note.body}
+                        </div>
+
+                        {showEventForComment(comment)}
+                    </div>
+                </>
             }
         </div>
     )
